@@ -56,7 +56,7 @@ public class Program
         IMotionSensor motionSensor = new MotionSensorInstance();
         ILightActuator lightActuator = new LightActuator();
         LightController controller = new LightController(motionSensor, lightActuator);
-        while(true)
+        while (true)
         {
             Thread.Sleep(100);
         }

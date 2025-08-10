@@ -32,19 +32,8 @@ public interface ILightActuator
     void ActuateLights(bool motionDetected);
 }
 
-public class LightActuator : ILightActuator
+public class LightActuator(ILightSwitcher lightSwitcher, ITimePeriodHelper timePeriodHelper, ICurrentTimeHelper currentTimeHelper) : ILightActuator
 {
-    private readonly ILightSwitcher lightSwitcher;
-    private readonly ITimePeriodHelper timePeriodHelper;
-    private readonly ICurrentTimeHelper currentTimeHelper;
-
-    public LightActuator(ILightSwitcher lightSwitcher, ITimePeriodHelper timePeriodHelper, ICurrentTimeHelper currentTimeHelper)
-    {
-        this.lightSwitcher = lightSwitcher ?? throw new ArgumentNullException(nameof(lightSwitcher));
-        this.timePeriodHelper = timePeriodHelper ?? throw new ArgumentNullException(nameof(timePeriodHelper));
-        this.currentTimeHelper = currentTimeHelper ?? throw new ArgumentNullException(nameof(currentTimeHelper));
-    }
-
     // public for testing, not part of interface
     public DateTime LastMotionTime { get; set; }
 

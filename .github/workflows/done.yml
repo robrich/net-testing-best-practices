@@ -1,4 +1,4 @@
-name: Unit Testing in .NET with XUnit and MoQ
+name: .NET Testing Best Practices
 
 on:
   push:

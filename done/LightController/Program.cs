@@ -58,16 +58,16 @@ public class Program
         var services = new ServiceCollection();
 
         services.AddSingleton<ILightSwitcher, LightSwitcherInstance>();
-        services.AddSingleton<IMotionSensor, MotionSensorInstance>();
         services.AddSingleton<ITimePeriodHelper, TimePeriodHelper>();
+        services.AddSingleton<IMotionSensor, MotionSensorInstance>();
         services.AddSingleton<ILightActuator, LightActuator>();
         services.AddSingleton<ICurrentTimeHelper, CurrentTimeHelper>();
         services.AddSingleton<LightController>();
 
-        var container =  services.BuildServiceProvider();
+        var ioc = services.BuildServiceProvider();
 
-        LightController controller = container.GetRequiredService<LightController>();
-        
+        LightController controller = ioc.GetRequiredService<LightController>();
+
         while (true)
         {
             Thread.Sleep(100);

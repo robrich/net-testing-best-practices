@@ -1,7 +1,7 @@
 .NET Testing Best Practices
 ===========================
 
-[![.NET Testing Best Practices](https://github.com/robrich/net-testing-xunit-moq/actions/workflows/done.yml/badge.svg)](https://github.com/robrich/net-testing-xunit-moq/actions/workflows/done.yml)
+[![.NET Testing Best Practices](https://github.com/robrich/net-testing-best-practices/actions/workflows/done.yml/badge.svg)](https://github.com/robrich/net-testing-best-practices/actions/workflows/done.yml)
 
 This is the code that supports the live demo of writing unit tests in C# and .NET using [xUnit](https://xunit.net/docs/getting-started/netcore/cmdline).
 

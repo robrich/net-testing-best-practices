@@ -1,6 +1,6 @@
 ﻿namespace LightController.Tests;
 
-public class LightActuator_ActuateLights
+public class LightActuator_ActuateLights_Tests
 {
 
     [Fact]
@@ -8,10 +8,11 @@ public class LightActuator_ActuateLights
     {
         // Arrange
         bool motionDetected = true;
-        DateTime startTime = new DateTime(2000, 1, 1); // random value
+        DateTime startTime = new DateTime(2000, 1, 1); // not now
 
         // Mocks
         var ioc = new Fixture().Customize(new AutoNSubstituteCustomization());
+        SetupCurrentTimeHelper(ioc, DateTime.Now);
 
         // Act
         LightActuator actuator = ioc.Create<LightActuator>();
@@ -20,7 +21,7 @@ public class LightActuator_ActuateLights
         DateTime actual = actuator.LastMotionTime;
 
         // Assert
-        actual.ShouldNotBe(startTime);
+        actual.ShouldBeGreaterThan(startTime);
     }
 
     [Fact]
@@ -28,10 +29,11 @@ public class LightActuator_ActuateLights
     {
         // Arrange
         bool motionDetected = false;
-        DateTime startTime = new DateTime(2000, 1, 1); // random value
+        DateTime startTime = new DateTime(2000, 1, 1); // not now
 
         // Mocks
         var ioc = new Fixture().Customize(new AutoNSubstituteCustomization());
+        SetupCurrentTimeHelper(ioc, DateTime.Now);
 
         // Act
         LightActuator actuator = ioc.Create<LightActuator>();
@@ -40,7 +42,7 @@ public class LightActuator_ActuateLights
         DateTime actual = actuator.LastMotionTime;
 
         // Assert
-        actual.ShouldBe(startTime);
+        actual.ShouldBe(startTime, tolerance: TimeSpan.FromMinutes(1));
     }
 
     [Theory]
